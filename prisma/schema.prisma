@@ -11,20 +11,29 @@ datasource db {
 }
 
 model Organization {
-  id              String @id @default(uuid())
+  id              String   @id @default(uuid())
   name            String
-  email           String @unique
+  email           String   @unique
   address         String
   whatsApp_number String
+  password_hash   String
+  created_at      DateTime @default(now())
+  pets            Pet[]
 
   @@map("organizations")
 }
 
 model Pet {
-  id      String   @id @default(uuid())
-  name    String
-  info    String
-  age     String
-  size    String
-  picture String[]
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  age         String
+  size        String
+  pictures    String[]
+  created_at  DateTime @default(now())
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
+
+  @@map("pets")
 }
