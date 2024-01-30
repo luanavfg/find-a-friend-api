@@ -1,0 +1,31 @@
+{
+  "name": "find-a-friend-api",
+  "version": "1.0.0",
+  "description": "## Regras da aplicação - [ ] Deve ser possível cadastrar um pet; - [ ] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade; - [ ] Deve ser possível filtrar pets por suas características; - [ ] Deve ser possível visualizar detalhes de um pet para adoção; - [ ] Deve ser possível se cadastrar como uma ORG; - [ ] Deve ser possível realizar login como uma ORG;",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luanavfg/find-a-friend-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luanavfg/find-a-friend-api/issues"
+  },
+  "homepage": "https://github.com/luanavfg/find-a-friend-api#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.10",
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "fastify": "^4.26.0"
+  }
+}
