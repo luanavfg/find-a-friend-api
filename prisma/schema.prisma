@@ -19,3 +19,12 @@ model Organization {
 
   @@map("organizations")
 }
+
+model Pet {
+  id      String   @id @default(uuid())
+  name    String
+  info    String
+  age     String
+  size    String
+  picture String[]
+}
