@@ -20,12 +20,12 @@
   },
   "homepage": "https://github.com/luanavfg/find-a-friend-api#readme",
   "devDependencies": {
-    "@types/node": "^20.11.10",
-    "tsup": "^8.0.1",
-    "tsx": "^4.7.0",
-    "typescript": "^5.3.3"
+    "@types/node": "20.11.10",
+    "tsup": "8.0.1",
+    "tsx": "4.7.0",
+    "typescript": "5.3.3"
   },
   "dependencies": {
-    "fastify": "^4.26.0"
+    "fastify": "4.26.0"
   }
 }
