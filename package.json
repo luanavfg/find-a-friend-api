@@ -21,6 +21,7 @@
   "homepage": "https://github.com/luanavfg/find-a-friend-api#readme",
   "devDependencies": {
     "@rocketseat/eslint-config": "2.1.0",
+    "@types/bcryptjs": "2.4.6",
     "@types/node": "20.11.10",
     "eslint": "8.56.0",
     "prisma": "5.9.0",
@@ -30,6 +31,7 @@
   },
   "dependencies": {
     "@prisma/client": "5.9.0",
+    "bcryptjs": "2.4.3",
     "dotenv": "16.4.1",
     "fastify": "4.26.0",
     "zod": "3.22.4"
