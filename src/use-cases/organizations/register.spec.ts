@@ -1,0 +1,67 @@
+import { describe, it, expect } from 'vitest'
+import { RegisterUseCase } from './register'
+import { compare } from 'bcryptjs'
+import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/in-memory-organizations-repository'
+import { OrganizationAlreadyExistsError } from '../errors/organization-already-exists-error'
+
+describe('Register Use Case', () => {
+  it('should be able to register new organization', async () => {
+    const organizationsRepository = new InMemoryOrganizationsRepository()
+    const registerUseCase = new RegisterUseCase(organizationsRepository)
+
+    const { organization } = await registerUseCase.execute({
+      name: 'Organization 1',
+      email: 'organization_1@test.com',
+      address: 'Fake address',
+      password: '123456',
+      whatsAppNumber: '123-456-789',
+    })
+
+    expect(organization.id).toEqual(expect.any(String))
+  })
+
+  it('should hash organization password upon registration', async () => {
+    const organizationsRepository = new InMemoryOrganizationsRepository()
+    const registerUseCase = new RegisterUseCase(organizationsRepository)
+
+    const { organization } = await registerUseCase.execute({
+      name: 'Organization 1',
+      email: 'organization_1@test.com',
+      address: 'Fake address',
+      password: '123456',
+      whatsAppNumber: '123-456-789',
+    })
+
+    const isPasswordCorrectlyHashed = await compare(
+      '123456',
+      organization.password_hash,
+    )
+
+    expect(isPasswordCorrectlyHashed).toBe(true)
+  })
+
+  it('should not be able to register with same email twice', async () => {
+    const organizationsRepository = new InMemoryOrganizationsRepository()
+    const registerUseCase = new RegisterUseCase(organizationsRepository)
+
+    const email = 'organization_1@test.com'
+
+    await registerUseCase.execute({
+      name: 'Organization 1',
+      email,
+      address: 'Fake address',
+      password: '123456',
+      whatsAppNumber: '123-456-789',
+    })
+
+    expect(() =>
+      registerUseCase.execute({
+        name: 'Organization 1',
+        email,
+        address: 'Fake address',
+        password: '123456',
+        whatsAppNumber: '123-456-789',
+      }),
+    ).rejects.toBeInstanceOf(OrganizationAlreadyExistsError)
+  })
+})
