@@ -1,6 +1,6 @@
 import { OrganizationsRepository } from '@/repositories/organizations-repository'
 import { hash } from 'bcryptjs'
-import { OrganizationAlreadyExistsError } from './errors/organization-already-exists-error'
+import { OrganizationAlreadyExistsError } from '../errors/organization-already-exists-error'
 
 interface RegisterUseCaseRequest {
   name: string
