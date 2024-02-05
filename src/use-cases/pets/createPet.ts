@@ -1,5 +1,6 @@
 import { OrganizationsRepository } from '@/repositories/organizations-repository'
 import { PetsRepository } from '@/repositories/pets-repository'
+import { OrganizationNotFoundError } from '../errors/organization-not-found-error'
 
 interface CreatePetUseCaseRequest {
   name: string
@@ -28,9 +29,9 @@ export class CreatePetUseCase {
       await this.organizationsRepository.findById(organizationId)
 
     if (!organization) {
-      throw new Error('Organization Not Found.')
+      throw new OrganizationNotFoundError()
     }
-    await this.petsRepository.create({
+    const pet = await this.petsRepository.create({
       name,
       age,
       size,
@@ -38,5 +39,7 @@ export class CreatePetUseCase {
       pictures,
       organization_id: organizationId,
     })
+
+    return { pet }
   }
 }
