@@ -11,7 +11,6 @@ export async function createPet(request: FastifyRequest, reply: FastifyReply) {
     pictures: z.array(z.string()),
   })
 
-  await request.jwtVerify()
   const organizationId = request.user.sub
 
   const { name, age, description, pictures, size } = createPetBodySchema.parse(
