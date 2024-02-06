@@ -9,6 +9,7 @@ interface RegisterUseCaseRequest {
   password: string
   whatsAppNumber: string
   address: string
+  cep: string
 }
 
 interface RegisterUseCaseResponse {
@@ -24,6 +25,7 @@ export class RegisterUseCase {
     address,
     password,
     whatsAppNumber,
+    cep,
   }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
     const passwordHash = await hash(password, 6)
 
@@ -40,6 +42,7 @@ export class RegisterUseCase {
       name,
       password_hash: passwordHash,
       whatsApp_number: whatsAppNumber,
+      cep,
     })
 
     return { organization }

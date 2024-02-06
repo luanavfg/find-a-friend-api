@@ -20,6 +20,7 @@ describe('Authenticate Use Case', () => {
       address: 'Fake address',
       password_hash: await hash('123456', 6),
       whatsApp_number: '123-456-789',
+      cep: '88907-987',
     })
     const { organization } = await authenticateUseCase.execute({
       email: 'organization_1@test.com',
@@ -45,6 +46,7 @@ describe('Authenticate Use Case', () => {
       address: 'Fake address',
       password_hash: await hash('123456', 6),
       whatsApp_number: '123-456-789',
+      cep: '88907-987',
     })
 
     expect(() =>

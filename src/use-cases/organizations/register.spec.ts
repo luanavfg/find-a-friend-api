@@ -18,6 +18,7 @@ describe('Register Use Case', () => {
       address: 'Fake address',
       password: '123456',
       whatsAppNumber: '123-456-789',
+      cep: '88907-987',
     })
 
     expect(organization.id).toEqual(expect.any(String))
@@ -30,6 +31,7 @@ describe('Register Use Case', () => {
       address: 'Fake address',
       password: '123456',
       whatsAppNumber: '123-456-789',
+      cep: '88907-987',
     })
 
     const isPasswordCorrectlyHashed = await compare(
@@ -49,6 +51,7 @@ describe('Register Use Case', () => {
       address: 'Fake address',
       password: '123456',
       whatsAppNumber: '123-456-789',
+      cep: '88907-987',
     })
 
     expect(() =>
@@ -58,6 +61,7 @@ describe('Register Use Case', () => {
         address: 'Fake address',
         password: '123456',
         whatsAppNumber: '123-456-789',
+        cep: '88907-987',
       }),
     ).rejects.toBeInstanceOf(OrganizationAlreadyExistsError)
   })

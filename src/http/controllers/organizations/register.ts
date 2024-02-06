@@ -10,9 +10,10 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     password: z.string().min(6),
     whatsAppNumber: z.string(),
     address: z.string(),
+    cep: z.string(),
   })
 
-  const { name, email, password, address, whatsAppNumber } =
+  const { name, email, password, address, whatsAppNumber, cep } =
     registerBodySchema.parse(request.body)
 
   try {
@@ -24,6 +25,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
       password,
       address,
       whatsAppNumber,
+      cep,
     })
   } catch (err) {
     if (err instanceof OrganizationAlreadyExistsError) {

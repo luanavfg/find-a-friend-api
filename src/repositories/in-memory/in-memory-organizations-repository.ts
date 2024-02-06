@@ -11,6 +11,7 @@ export class InMemoryOrganizationsRepository
       id: 'organization-1',
       name: data.name,
       address: data.address,
+      cep: data.cep,
       email: data.email,
       whatsApp_number: data.whatsApp_number,
       password_hash: data.password_hash,
