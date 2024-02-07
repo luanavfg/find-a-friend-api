@@ -72,27 +72,4 @@ describe('Search Pets Use Case', () => {
     expect(pets).toHaveLength(1)
     expect(pets[0]).toEqual(expect.objectContaining({ name: 'fake pet 02' }))
   })
-
-  it.skip('should not be able to search a pet without choosing a city', async () => {
-    await petsRepository.create({
-      name: 'fake pet 03',
-      age: 'elderly',
-      description: 'Blind pet',
-      city: '',
-      organization_id: 'fake-org-01',
-      size: 'medium',
-      pictures: [],
-    })
-
-    const { pets } = await searchPetsUseCase.execute({
-      city: 'fake-city-01',
-      query: {
-        age: 'cub',
-        size: 'small',
-      },
-    })
-
-    expect(pets).toHaveLength(1)
-    expect(pets[0]).toEqual(expect.objectContaining({ name: 'fake pet 02' }))
-  })
 })
