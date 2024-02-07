@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "pets" ALTER COLUMN "age" DROP NOT NULL,
+ALTER COLUMN "size" DROP NOT NULL;

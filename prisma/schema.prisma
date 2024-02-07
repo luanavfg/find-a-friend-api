@@ -41,8 +41,8 @@ model Pet {
   name        String
   description String?
   city        String
-  age         Age
-  size        Size
+  age         Age?
+  size        Size?
   pictures    String[]
   created_at  DateTime @default(now())
 
