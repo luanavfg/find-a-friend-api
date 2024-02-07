@@ -1,12 +1,9 @@
-import { Prisma, Pet, Age, Size } from '@prisma/client'
+import { SearchQuery } from '@/http/controllers/pets/search-pets'
+import { Prisma, Pet } from '@prisma/client'
 
-interface PetsQuery {
-  age: Age | null
-  size: Size | null
-}
 export interface SearchPetsFilters {
   city: string
-  query?: PetsQuery
+  query?: SearchQuery
 }
 export interface PetsRepository {
   create(data: Prisma.PetUncheckedCreateInput): Promise<Pet>

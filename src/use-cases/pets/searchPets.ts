@@ -1,13 +1,10 @@
+import { SearchQuery } from '@/http/controllers/pets/search-pets'
 import { PetsRepository } from '@/repositories/pets-repository'
-import { Age, Pet, Size } from '@prisma/client'
+import { Pet } from '@prisma/client'
 
-interface PetsQuery {
-  age: Age | null
-  size: Size | null
-}
 interface SearchPetsUseCaseRequest {
   city: string
-  query?: PetsQuery
+  query?: SearchQuery
 }
 
 interface SearchPetsUseCaseResponse {
