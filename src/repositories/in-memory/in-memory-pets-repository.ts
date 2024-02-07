@@ -10,11 +10,11 @@ export class InMemoryPetsRepository implements PetsRepository {
     const pet: Pet = {
       id: randomUUID(),
       name: data.name,
-      age: 'adult',
-      city: 'NYC',
-      description: 'Friendly dog, likes to play',
+      age: data.age ? data.age : null,
+      city: data.city,
+      description: data.description ? data.description : null,
       pictures: [],
-      size: 'big',
+      size: data.size ? data.size : null,
       organization_id: data.organization_id,
       created_at: new Date(),
     }
@@ -40,7 +40,7 @@ export class InMemoryPetsRepository implements PetsRepository {
       return petsFiltered
     }
 
-    const petsByCharacteristic = this.pets.filter(
+    const petsByCharacteristic = petsFiltered.filter(
       (pet) =>
         (!query.age || pet.age === query?.age) &&
         (!query.size || pet.size === query?.size),
