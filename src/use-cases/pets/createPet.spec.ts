@@ -18,6 +18,7 @@ describe('Create Pet Use Case', () => {
       name: 'Organization 1',
       email: 'organization_1@test.com',
       address: 'Fake address',
+      cep: '123-456-345',
       password_hash: await hash('123456', 6),
       whatsApp_number: '123-456-789',
       created_at: new Date(),
@@ -25,8 +26,9 @@ describe('Create Pet Use Case', () => {
 
     const { pet } = await createPetUseCase.execute({
       name: 'fake name',
-      age: '1 year',
+      age: 'adult',
       description: 'Friendly pet',
+      city: 'fake city',
       organizationId: id,
       size: 'big',
       pictures: [],
@@ -46,7 +48,8 @@ describe('Create Pet Use Case', () => {
     expect(() =>
       createPetUseCase.execute({
         name: 'fake name',
-        age: '1 year',
+        age: 'adult',
+        city: 'fake city',
         description: 'Friendly pet',
         organizationId: 'fake-org-id',
         size: 'big',

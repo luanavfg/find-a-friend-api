@@ -5,8 +5,9 @@ import { OrganizationNotFoundError } from '../errors/organization-not-found-erro
 interface CreatePetUseCaseRequest {
   name: string
   description: string
-  age: string
-  size: 'big' | 'medium' | 'small'
+  city: string
+  age?: 'cub' | 'adult' | 'elderly' | null
+  size?: 'big' | 'medium' | 'small' | null
   pictures: Array<string>
   organizationId: string
 }
@@ -21,6 +22,7 @@ export class CreatePetUseCase {
     name,
     age,
     description,
+    city,
     pictures,
     size,
     organizationId,
@@ -33,6 +35,7 @@ export class CreatePetUseCase {
     }
     const pet = await this.petsRepository.create({
       name,
+      city,
       age,
       size,
       description,

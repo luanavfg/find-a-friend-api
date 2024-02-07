@@ -6,16 +6,16 @@ export async function createPet(request: FastifyRequest, reply: FastifyReply) {
   const createPetBodySchema = z.object({
     name: z.string(),
     description: z.string(),
-    age: z.string(),
-    size: z.enum(['big', 'medium', 'small']).default('medium'),
+    age: z.enum(['adult', 'elderly', 'cub']),
+    size: z.enum(['big', 'medium', 'small']),
+    city: z.string(),
     pictures: z.array(z.string()),
   })
 
   const organizationId = request.user.sub
 
-  const { name, age, description, pictures, size } = createPetBodySchema.parse(
-    request.body,
-  )
+  const { name, age, description, pictures, size, city } =
+    createPetBodySchema.parse(request.body)
 
   try {
     const createPetUseCase = makeCreatePetUseCase()
@@ -23,6 +23,7 @@ export async function createPet(request: FastifyRequest, reply: FastifyReply) {
     await createPetUseCase.execute({
       name,
       age,
+      city,
       description,
       organizationId,
       pictures,
