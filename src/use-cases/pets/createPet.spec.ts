@@ -3,7 +3,7 @@ import { hash } from 'bcryptjs'
 import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/in-memory-organizations-repository'
 import { CreatePetUseCase } from './createPet'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
-import { OrganizationNotFoundError } from '../errors/organization-not-found-error'
+import { InvalidOrganizationError } from '../errors/organization-invalid-error'
 
 describe('Create Pet Use Case', () => {
   it('should be able to create a new pet', async () => {
@@ -55,6 +55,6 @@ describe('Create Pet Use Case', () => {
         size: 'big',
         pictures: [],
       }),
-    ).rejects.toBeInstanceOf(OrganizationNotFoundError)
+    ).rejects.toBeInstanceOf(InvalidOrganizationError)
   })
 })
