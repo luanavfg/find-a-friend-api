@@ -48,4 +48,8 @@ export class InMemoryPetsRepository implements PetsRepository {
 
     return petsByCharacteristic
   }
+
+  deleteAll(): Promise<void> {
+    throw new Error('Method not implemented')
+  }
 }

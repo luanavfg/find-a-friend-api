@@ -31,4 +31,8 @@ export class PrismaPetsRepository implements PetsRepository {
 
     return pets
   }
+
+  async deleteAll(): Promise<void> {
+    await prisma.pet.deleteMany()
+  }
 }
